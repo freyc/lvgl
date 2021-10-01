@@ -2,6 +2,8 @@
 include(sources.cmake)
 
 add_library(lvgl STATIC ${SOURCES})
+target_include_directories(lvgl PUBLIC ${LVGL_CONFIG_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+target_compile_definitions(lvgl PUBLIC LV_LVGL_H_INCLUDE_SIMPLE)
 
 #[[
 if(ESP_PLATFORM)
