@@ -1,3 +1,9 @@
+
+include(sources.cmake)
+
+add_library(lvgl STATIC ${SOURCES})
+
+#[[
 if(ESP_PLATFORM)
 
     file(GLOB_RECURSE SOURCES src/*.c)
@@ -90,3 +96,4 @@ else()
     endif(MICROPY_DIR)
 
 endif()
+]]
