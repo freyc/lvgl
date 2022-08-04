@@ -81,6 +81,8 @@ void lv_example_keyboard_1(void);
 void lv_example_label_1(void);
 void lv_example_label_2(void);
 void lv_example_label_3(void);
+void lv_example_label_4(void);
+void lv_example_label_5(void);
 
 void lv_example_led_1(void);
 
@@ -88,6 +90,12 @@ void lv_example_line_1(void);
 
 void lv_example_list_1(void);
 void lv_example_list_2(void);
+
+void lv_example_menu_1(void);
+void lv_example_menu_2(void);
+void lv_example_menu_3(void);
+void lv_example_menu_4(void);
+void lv_example_menu_5(void);
 
 void lv_example_meter_1(void);
 void lv_example_meter_2(void);

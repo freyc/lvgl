@@ -1,7 +1,3 @@
-```eval_rst
-.. include:: /header.rst 
-:github_url: |github_link_base|/widgets/table.md
-```
 # Table (lv_table)
 
 ## Overview
@@ -10,6 +6,7 @@ Tables, as usual, are built from rows, columns, and cells containing texts.
 
 The Table object is very lightweight because only the texts are stored. No real objects are created for cells but they are just drawn on the fly.
 
+The Table is added to the default group (if it is set). Besides the Table is an editable object to allow selecting a cell with encoder navigation too.
 
 ## Parts and Styles
 - `LV_PART_MAIN` The background of the table uses all the typical background style properties.
@@ -26,7 +23,7 @@ The cells can store only text so numbers need to be converted to text before dis
 
 Line breaks can be used in the text like `"Value\n60.3"`.
 
-New rows and columns are automatically added is required 
+New rows and columns are automatically added is required
 
 ### Rows and Columns
 
@@ -43,19 +40,20 @@ The height is calculated automatically from the cell styles (font, padding etc) 
 Cells can be merged horizontally with `lv_table_add_cell_ctrl(table, row, col, LV_TABLE_CELL_CTRL_MERGE_RIGHT)`. To merge more adjacent cells call this function for each cell.
 
 ### Scroll
-If the label's width or height is set to `LV_SIZE_CONTENT` that size will be used to show the whole table in the respective direction. 
+If the label's width or height is set to `LV_SIZE_CONTENT` that size will be used to show the whole table in the respective direction.
 E.g. `lv_obj_set_size(table, LV_SIZE_CONTENT, LV_SIZE_CONTENT)` automatically sets the table size to show all the columns and rows.
 
 If the width or height is set to a smaller number than the "intrinsic" size then the table becomes scrollable.
 
 ## Events
+- `LV_EVENT_VALUE_CHANGED` Sent when a new cell is selected with keys.
 - `LV_EVENT_DRAW_PART_BEGIN` and `LV_EVENT_DRAW_PART_END` are sent for the following types:
     - `LV_TABLE_DRAW_PART_CELL` The individual cells of the table
-        - `part`: `LV_PART_ITEMS` 
+        - `part`: `LV_PART_ITEMS`
         - `draw_area`: area of the indicator
         - `rect_dsc`
         - `label_dsc`
-        - `id`: current row &times; col count + current column 
+        - `id`: current row &times; col count + current column
 
 See the events of the [Base object](/widgets/obj) too.
 
@@ -63,7 +61,12 @@ Learn more about [Events](/overview/event).
 
 ## Keys
 
-No *Keys* are processed by the object type.
+The following *Keys* are processed by the Tables:
+- `LV_KEY_RIGHT/LEFT/UP/DOWN/` Select a cell.
+
+Note that, as usual, the state of `LV_KEY_ENTER` is translated to `LV_EVENT_PRESSED/PRESSING/RELEASED` etc.
+
+`lv_table_get_selected_cell(table, &row, &col)` can be used to get the currently selected cell. Row and column will be set to `LV_TABLE_CELL_NONE` no cell is selected.
 
 Learn more about [Keys](/overview/indev).
 
@@ -78,11 +81,11 @@ Learn more about [Keys](/overview/indev).
 ### MicroPython
 No examples yet.
 
-## API 
+## API
 
 ```eval_rst
 
 .. doxygenfile:: lv_table.h
   :project: lvgl
-        
+
 ```
