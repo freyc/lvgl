@@ -1,4 +1,8 @@
 
+set(LVGL_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+include(env_support/cmake/custom.cmake)
+
+#[[
 include(sources.cmake)
 
 option(LVGL_BUILD_EXAMPLES "Build LVGL-examples" ON)
@@ -10,7 +14,7 @@ target_compile_definitions(lvgl PUBLIC LV_LVGL_H_INCLUDE_SIMPLE)
 if(LVGL_BUILD_EXAMPLES)
     target_sources(lvgl PRIVATE ${EXAMPLE_SOURCES})
 endif()
-
+]]
 #[[
 if(ESP_PLATFORM)
 
